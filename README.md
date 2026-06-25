@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# Baby Shower de Olivia 🎀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page creada especialmente para el baby shower de Olivia.
 
-Currently, two official plugins are available:
+La idea del proyecto es reunir en un solo lugar toda la información del evento, compartir algunos momentos especiales y organizar la lista de regalos para evitar que se repitan.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ¿Qué incluye?
 
-## React Compiler
+* Invitación con fecha, horario y lugar.
+* Galería de fotos.
+* Lista de ideas de regalos.
+* Regalos disponibles y ya elegidos.
+* Links de referencia para conocer el estilo de regalo buscado.
+* Confirmación de asistencia por WhatsApp.
+* Opción para agregar el evento al calendario.
+* Diseño adaptado a celulares y computadoras.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Sobre la lista de regalos
 
-## Expanding the ESLint configuration
+Los productos publicados funcionan como referencia.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+No es necesario comprar exactamente el modelo del enlace. La intención es mostrar el tipo de producto, los colores y el estilo que les gustan a los futuros papás.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Cuando una persona elige un regalo, este queda marcado para que los demás invitados sepan que ya fue reservado.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Diseño
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+La estética está inspirada en:
 
-```
+* Frutillas.
+* Flores.
+* Moños.
+* Acuarelas.
+* Tonos rosa, crema y verde salvia.
+* Invitaciones vintage y románticas.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Paleta principal
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* `#FEF6F0`
+* `#C8374A`
+* `#8DAB8D`
+* `#F9D5E5`
+* `#E8A0B4`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tecnologías utilizadas
 
-```
+* React
+* TypeScript
+* Tailwind CSS
+* Supabase
+* Vercel
+
+## Estado del proyecto
+
+El proyecto se encuentra en desarrollo.
+
+Actualmente estoy trabajando en:
+
+* Maquetado responsive.
+* Integración de los regalos.
+* Reserva de regalos.
+* Confirmación por WhatsApp.
+* Publicación final en Vercel.
+
+## Vista previa
+
+Próximamente se agregarán capturas de la versión desktop y mobile.
+
+## Autora
+
+**Agostina Di Napoli**
+
+* GitHub: [antemortem22](https://github.com/antemortem22)
+* Portfolio: [agosdev-portfolio.vercel.app](https://agosdev-portfolio.vercel.app)
