@@ -65,7 +65,7 @@ export function ReserveGiftModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="gift-modal-title"
-        className="modal-panel p-6 sm:p-7"
+        className="modal-panel p-5 sm:p-7"
         onClick={(event) => event.stopPropagation()}
       >
         {status === 'success' ? (
@@ -73,7 +73,7 @@ export function ReserveGiftModal({
             <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-pink-medium)]">
               Regalos
             </p>
-            <h3 id="gift-modal-title" className="font-serif text-4xl text-[var(--color-text)]">
+            <h3 id="gift-modal-title" className="font-serif text-[2rem] text-[var(--color-text)] sm:text-4xl">
               ¡Regalo reservado!
             </h3>
             <p className="text-sm leading-6 text-[var(--color-text-muted)]">
@@ -99,7 +99,7 @@ export function ReserveGiftModal({
               <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-pink-medium)]">
               Lista de regalos
               </p>
-              <h3 id="gift-modal-title" className="mt-2 font-serif text-4xl text-[var(--color-text)]">
+              <h3 id="gift-modal-title" className="mt-2 font-serif text-[2rem] text-[var(--color-text)] sm:text-4xl">
                 {currentGift.name}
               </h3>
             </div>

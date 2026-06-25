@@ -76,16 +76,19 @@ export function EventDetails() {
       <div className="page-shell">
         <div className="section-heading">
           <p className="section-eyebrow">Detalles</p>
-          <h2 className="section-title">Información del evento</h2>
+          <h2 className="section-title">Información del evento🌿</h2>
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {detailItems.map((item) => (
-            <article key={item.title} className="card-surface rounded-[24px] px-5 py-5">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(249,213,229,0.35)] text-[var(--color-strawberry)]">
+            <article
+              key={item.title}
+              className="card-surface group rounded-[24px] px-4 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(180,126,120,0.16)] sm:px-5 sm:py-5"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(249,213,229,0.35)] text-[var(--color-strawberry)] transition-colors duration-200 group-hover:bg-[rgba(249,213,229,0.6)]">
                 {item.icon}
               </div>
-              <h3 className="mt-4 font-serif text-3xl leading-none text-[var(--color-text)]">
+              <h3 className="mt-4 font-serif text-[1.75rem] font-bold leading-none text-[var(--color-text)] transition-colors duration-200 group-hover:text-[rgba(47,42,42,0.92)] sm:text-3xl">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm font-semibold text-[var(--color-text)]">{item.value}</p>

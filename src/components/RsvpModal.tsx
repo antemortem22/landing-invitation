@@ -68,7 +68,7 @@ export function RsvpModal({ onClose }: RsvpModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="rsvp-modal-title"
-        className="modal-panel max-h-[92vh] overflow-y-auto p-6 sm:p-7"
+        className="modal-panel max-h-[92vh] overflow-y-auto p-5 sm:p-7"
         onClick={(event) => event.stopPropagation()}
       >
         {step === 'form' ? (
@@ -77,7 +77,7 @@ export function RsvpModal({ onClose }: RsvpModalProps) {
               <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-pink-medium)]">
                 Confirmación
               </p>
-              <h3 id="rsvp-modal-title" className="mt-2 font-serif text-4xl text-[var(--color-text)]">
+              <h3 id="rsvp-modal-title" className="mt-2 font-serif text-[2rem] text-[var(--color-text)] sm:text-4xl">
                 Responder invitación
               </h3>
             </div>
@@ -167,7 +167,7 @@ export function RsvpModal({ onClose }: RsvpModalProps) {
               <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-pink-medium)]">
                 Confirmación
               </p>
-              <h3 id="rsvp-modal-title" className="mt-2 font-serif text-4xl text-[var(--color-text)]">
+              <h3 id="rsvp-modal-title" className="mt-2 font-serif text-[2rem] text-[var(--color-text)] sm:text-4xl">
                 Tu mensaje está listo
               </h3>
             </div>

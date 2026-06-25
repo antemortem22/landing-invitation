@@ -69,24 +69,24 @@ export function Gallery() {
           <h2 className="section-title">✨ Momentos ✨</h2>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-7 sm:mt-8">
           <div className="relative">
             <button
               type="button"
               aria-label="Ver fotos anteriores"
-              className="absolute left-0 top-[38%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(255,253,252,0.98)] text-[var(--color-text)] shadow-[0_10px_26px_rgba(180,126,120,0.18)] sm:-left-4 lg:-left-5"
+              className="absolute -left-2 top-[35%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(255,253,252,0.98)] text-[var(--color-text)] shadow-[0_10px_26px_rgba(180,126,120,0.18)] sm:-left-4 sm:top-[38%] sm:h-11 sm:w-11 lg:-left-5"
               onClick={handlePrevious}
             >
               <ChevronLeft />
             </button>
 
             <div
-              className={`mx-auto grid max-w-[1040px] gap-5 px-10 sm:px-8 ${
+              className={`mx-auto grid gap-4 sm:gap-5 ${
                 visibleCount === 1
-                  ? 'grid-cols-1'
+                  ? 'max-w-[320px] grid-cols-1 px-8 sm:max-w-[360px] sm:px-10'
                   : visibleCount === 2
-                    ? 'grid-cols-2'
-                    : 'grid-cols-3'
+                    ? 'max-w-[760px] grid-cols-2 px-8 sm:px-8'
+                    : 'max-w-[1040px] grid-cols-3 px-10 sm:px-8'
               }`}
             >
               {visibleItems.map((item, index) => (
@@ -97,7 +97,7 @@ export function Gallery() {
             <button
               type="button"
               aria-label="Ver fotos siguientes"
-              className="absolute right-0 top-[38%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(255,253,252,0.98)] text-[var(--color-text)] shadow-[0_10px_26px_rgba(180,126,120,0.18)] sm:-right-4 lg:-right-5"
+              className="absolute -right-2 top-[35%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(255,253,252,0.98)] text-[var(--color-text)] shadow-[0_10px_26px_rgba(180,126,120,0.18)] sm:-right-4 sm:top-[38%] sm:h-11 sm:w-11 lg:-right-5"
               onClick={handleNext}
             >
               <ChevronRight />

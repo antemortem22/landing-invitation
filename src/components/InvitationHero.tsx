@@ -71,42 +71,45 @@ const detailItems: DetailItem[] = [
 
 export function InvitationHero() {
   return (
-    <section id="inicio" className="relative px-4 pb-10 pt-8 sm:pb-14 sm:pt-10">
+    <section
+      id="inicio"
+      className="relative flex min-h-0 items-center px-4 py-4 sm:min-h-[calc(100svh-58px)] sm:py-5"
+    >
       <div className="page-shell">
-        <div className="mx-auto max-w-[920px] rounded-[32px] border border-[rgba(232,160,180,0.42)] bg-[rgba(254,246,240,0.96)] px-6 py-8 shadow-[0_18px_44px_rgba(180,126,120,0.2)] backdrop-blur-md sm:px-10 sm:py-10 lg:px-16 lg:py-12">
-          <div className="mb-4 flex justify-center">
-            <img src={pinkBow} alt="" aria-hidden="true" className="h-auto w-24 sm:w-28" />
+        <div className="mx-auto max-w-[880px] rounded-[32px] border border-[rgba(232,160,180,0.42)] bg-[rgba(254,246,240,0.96)] px-4 py-5 shadow-[0_18px_44px_rgba(180,126,120,0.2)] backdrop-blur-md sm:px-8 sm:py-7 lg:px-12 lg:py-7">
+          <div className="mb-2.5 flex justify-center sm:mb-3">
+            <img src={pinkBow} alt="" aria-hidden="true" className="h-auto w-16 sm:w-20" />
           </div>
 
-          <div className="mx-auto flex max-w-[560px] flex-col items-center text-center">
-            <p className="mb-4 text-[0.72rem] uppercase tracking-[0.35em] text-[var(--color-strawberry)]">
+          <div className="mx-auto flex max-w-[520px] flex-col items-center text-center">
+            <p className="mb-2 text-[0.62rem] uppercase tracking-[0.28em] text-[var(--color-strawberry)] sm:text-[0.66rem] sm:tracking-[0.33em]">
               {eventConfig.eyebrow}
             </p>
 
-            <h1 className="font-serif text-[clamp(3.2rem,7vw,5.3rem)] leading-[0.92] text-[var(--color-text)]">
+            <h1 className="font-serif text-[clamp(2.35rem,10vw,4.3rem)] font-bold leading-[0.9] text-[var(--color-text)]">
               {eventConfig.title}
             </h1>
 
-            <p className="mt-2 font-serif text-[clamp(1.9rem,4vw,3rem)] italic text-[var(--color-pink-medium)]">
+            <p className="mt-1 font-serif text-[clamp(1.55rem,3vw,2.35rem)] italic text-[var(--color-pink-medium)]">
               {eventConfig.subtitle}
             </p>
 
-            <p className="mt-5 max-w-[28rem] text-[15px] leading-7 text-[var(--color-text-muted)] sm:text-[1.08rem]">
+            <p className="mt-3 max-w-[27rem] text-[0.92rem] leading-6 text-[var(--color-text-muted)] sm:text-[0.96rem]">
               {eventConfig.description}
             </p>
 
-            <div className="mt-6 h-[2px] w-48 bg-[linear-gradient(90deg,rgba(232,160,180,0),rgba(232,160,180,0.9),rgba(232,160,180,0))]" />
+            <div className="mt-4 h-[2px] w-40 bg-[linear-gradient(90deg,rgba(232,160,180,0),rgba(232,160,180,0.9),rgba(232,160,180,0))]" />
 
-            <ul className="mt-6 flex w-full max-w-[360px] flex-col gap-3 text-left">
+            <ul className="mt-4 flex w-full max-w-[320px] flex-col gap-2.5 text-left sm:max-w-[340px]">
               {detailItems.map((item) => (
                 <li key={item.value} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(249,213,229,0.6)] text-[var(--color-strawberry)]">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[rgba(249,213,229,0.6)] text-[var(--color-strawberry)]">
                     {item.icon}
                   </span>
                   <div>
-                    <p className="text-[0.96rem] font-semibold text-[var(--color-text)]">{item.value}</p>
+                    <p className="text-[0.92rem] font-semibold text-[var(--color-text)]">{item.value}</p>
                     {item.helper ? (
-                      <p className="mt-0.5 text-[0.82rem] text-[var(--color-text-muted)]">
+                      <p className="mt-0.5 text-[0.8rem] text-[var(--color-text-muted)]">
                         {item.helper}
                       </p>
                     ) : null}
@@ -115,33 +118,33 @@ export function InvitationHero() {
               ))}
             </ul>
 
-            <div className="mt-7 flex w-full flex-col gap-3 sm:flex-row sm:flex-nowrap sm:items-center sm:justify-center sm:gap-4">
+            <div className="mt-5 flex w-full flex-col gap-2.5 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-3 lg:flex-nowrap">
               <a
                 href="#confirmar"
-                className="pill-button w-full border border-transparent bg-[linear-gradient(90deg,#e88d9d,#df798b)] px-7 text-[var(--color-warm-white)] shadow-[var(--shadow-soft)] sm:min-w-[210px] sm:w-auto"
+                className="pill-button w-full border border-transparent bg-[linear-gradient(90deg,#e88d9d,#df798b)] px-6 text-[var(--color-warm-white)] shadow-[var(--shadow-soft)] md:min-w-[198px] md:w-auto"
               >
                 Confirmar asistencia
               </a>
-              <CalendarButton className="w-full shrink-0 sm:min-w-[210px] sm:w-auto" />
+              <CalendarButton className="w-full shrink-0 md:min-w-[198px] md:w-auto" />
               <a
                 href={eventConfig.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="pill-button w-full shrink-0 justify-center bg-transparent px-2 text-[var(--color-pink-medium)] sm:min-h-[48px] sm:w-auto"
+                className="pill-button w-full shrink-0 justify-center bg-transparent px-2 text-[var(--color-pink-medium)] md:min-h-[44px] md:w-auto"
               >
                 Como llegar
                 <ArrowRightMini />
               </a>
             </div>
 
-            <div className="mt-7 flex w-full items-center justify-center gap-4 text-[var(--color-pink-medium)]">
-              <div className="h-[2px] w-20 bg-[linear-gradient(90deg,rgba(232,160,180,0),rgba(232,160,180,0.9))]" />
+            <div className="mt-5 flex w-full items-center justify-center gap-4 text-[var(--color-pink-medium)]">
+              <div className="h-[2px] w-16 bg-[linear-gradient(90deg,rgba(232,160,180,0),rgba(232,160,180,0.9))]" />
               <div className="flex items-center gap-2">
                 <StrawberryDot />
                 <FlowerDot />
                 <StrawberryDot />
               </div>
-              <div className="h-[2px] w-20 bg-[linear-gradient(90deg,rgba(232,160,180,0.9),rgba(232,160,180,0))]" />
+              <div className="h-[2px] w-16 bg-[linear-gradient(90deg,rgba(232,160,180,0.9),rgba(232,160,180,0))]" />
             </div>
           </div>
         </div>

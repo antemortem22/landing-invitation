@@ -2,10 +2,10 @@ import type { EventConfig } from '../types'
 
 export const eventConfig: EventConfig = {
   babyName: 'Olivia',
-  inviteeGreeting: 'Bienvenida, Olivia 🎀',
+  inviteeGreeting: 'Bienvenida, Olivia',
   eyebrow: 'CON MUCHO AMOR, TE INVITAMOS AL',
   title: 'Baby Shower',
-  subtitle: 'de Olivia ',
+  subtitle: '✨ de Olivia ✨',
   description:
     'Tu presencia hará este momento aún más especial. Celebremos juntos la llegada de nuestra pequeña Olivia con amor y alegría.',
   dateLabel: '18 de julio de 2026',

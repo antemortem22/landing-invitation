@@ -26,6 +26,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background: var(--color-cream);
   color: var(--color-text);
   font-family: var(--font-sans);
@@ -81,8 +82,14 @@ select:focus-visible {
 }
 
 .page-shell {
-  width: min(1120px, calc(100% - 32px));
+  width: min(1120px, calc(100% - 24px));
   margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .page-shell {
+    width: min(1120px, calc(100% - 40px));
+  }
 }
 
 .card-surface {
@@ -104,7 +111,7 @@ select:focus-visible {
   align-items: center;
   gap: 0.65rem;
   font-family: var(--font-serif);
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
   font-style: italic;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -126,13 +133,19 @@ select:focus-visible {
 
 @media (max-width: 768px) {
   .section-eyebrow {
-    font-size: 2rem;
+    gap: 0.45rem;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    width: 28px;
   }
 }
 
 .section-title {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 5vw, 3.3rem);
+  font-weight: 700;
   line-height: 0.95;
   color: var(--color-text);
 }
