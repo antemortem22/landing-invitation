@@ -1,0 +1,10 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" rx="40" fill="#FFF7F2"/>
+  <rect x="58" y="72" width="684" height="856" rx="34" fill="#FFF0F3"/>
+  <ellipse cx="400" cy="432" rx="220" ry="174" fill="#FFFDFC"/>
+  <ellipse cx="398" cy="438" rx="170" ry="128" fill="#F9D5E5"/>
+  <ellipse cx="402" cy="448" rx="110" ry="76" fill="#FEF6F0"/>
+  <path d="M200 280C246 232 326 222 392 244C458 266 516 318 594 336" stroke="#E8A0B4" stroke-width="16" stroke-linecap="round"/>
+  <path d="M188 636C252 598 336 590 400 606C464 622 516 664 584 706" stroke="#8DAB8D" stroke-width="16" stroke-linecap="round" stroke-opacity="0.56"/>
+  <text x="400" y="870" text-anchor="middle" fill="#6F6666" font-family="Georgia, serif" font-size="34">Reemplazar por foto real</text>
+</svg>

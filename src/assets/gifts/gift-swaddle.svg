@@ -1,0 +1,8 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" rx="36" fill="#FFFDFC"/>
+  <rect x="146" y="118" width="508" height="362" rx="28" fill="#F9D5E5"/>
+  <path d="M146 208C226 154 320 130 402 130C484 130 574 154 654 208" stroke="#FFFDFC" stroke-width="14"/>
+  <path d="M146 316C226 262 320 238 402 238C484 238 574 262 654 316" stroke="#FFFDFC" stroke-width="14"/>
+  <path d="M146 424C226 370 320 346 402 346C484 346 574 370 654 424" stroke="#FFFDFC" stroke-width="14"/>
+  <text x="400" y="552" text-anchor="middle" fill="#6F6666" font-family="Arial, sans-serif" font-size="28">Placeholder regalo</text>
+</svg>

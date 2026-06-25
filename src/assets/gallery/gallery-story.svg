@@ -1,0 +1,9 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" rx="40" fill="#FFF7F8"/>
+  <rect x="46" y="60" width="708" height="880" rx="34" fill="#FCE1E7"/>
+  <circle cx="248" cy="378" r="152" fill="#F9D5E5"/>
+  <circle cx="532" cy="332" r="126" fill="#FFF1F4"/>
+  <circle cx="506" cy="648" r="170" fill="#E8A0B4" fill-opacity="0.28"/>
+  <rect x="126" y="650" width="232" height="164" rx="24" fill="#FFFDFC"/>
+  <text x="400" y="880" text-anchor="middle" fill="#6F6666" font-family="Georgia, serif" font-size="34">Reemplazar por foto real</text>
+</svg>

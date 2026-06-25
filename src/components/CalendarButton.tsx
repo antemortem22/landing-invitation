@@ -1,0 +1,36 @@
+import type { AnchorHTMLAttributes, ReactNode } from 'react'
+import { getCalendarFileUrl } from '../utils/calendar'
+
+type CalendarButtonProps = {
+  children?: ReactNode
+  className?: string
+} & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>
+
+function CalendarMiniIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="4.5" y="5.5" width="15" height="14" rx="3" />
+      <path d="M8 3.5v4M16 3.5v4M4.5 9.5h15" />
+    </svg>
+  )
+}
+
+export function CalendarButton({
+  children = 'Agregar al calendario',
+  className = '',
+  ...props
+}: CalendarButtonProps) {
+  return (
+    <a
+      href={getCalendarFileUrl()}
+      className={`pill-button border-[rgba(232,160,180,0.52)] bg-[rgba(249,213,229,0.72)] text-[var(--color-text)] shadow-none hover:bg-[rgba(249,213,229,0.88)] ${className}`.trim()}
+      download
+      {...props}
+    >
+      <span className="text-[var(--color-pink-medium)]">
+        <CalendarMiniIcon />
+      </span>
+      {children}
+    </a>
+  )
+}

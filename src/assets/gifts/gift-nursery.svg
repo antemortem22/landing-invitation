@@ -1,0 +1,15 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" rx="36" fill="#FFF7F8"/>
+  <rect x="184" y="144" width="430" height="222" rx="22" fill="#FFFDFC"/>
+  <path d="M184 390H614" stroke="#E8A0B4" stroke-width="14" stroke-linecap="round"/>
+  <path d="M232 184V390" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M304 184V390" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M376 184V390" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M448 184V390" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M520 184V390" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M592 184V390" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="176" cy="122" r="34" fill="#F9D5E5"/>
+  <circle cx="400" cy="102" r="26" fill="#FFF1F4"/>
+  <circle cx="622" cy="122" r="34" fill="#F9D5E5"/>
+  <text x="400" y="552" text-anchor="middle" fill="#6F6666" font-family="Arial, sans-serif" font-size="28">Placeholder regalo</text>
+</svg>

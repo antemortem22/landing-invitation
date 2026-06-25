@@ -1,0 +1,15 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" rx="40" fill="#FFFDFC"/>
+  <rect x="56" y="72" width="688" height="856" rx="34" fill="#FEF6F0"/>
+  <rect x="166" y="262" width="468" height="292" rx="18" fill="#FFFDFC" stroke="#E8A0B4" stroke-width="12"/>
+  <path d="M194 582H608" stroke="#E8A0B4" stroke-width="14" stroke-linecap="round"/>
+  <path d="M240 314V582" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M320 314V582" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M400 314V582" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M480 314V582" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M560 314V582" stroke="#C9D9C9" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="238" cy="212" r="44" fill="#F9D5E5"/>
+  <circle cx="400" cy="186" r="34" fill="#FFF7F2"/>
+  <circle cx="560" cy="214" r="44" fill="#F9D5E5"/>
+  <text x="400" y="860" text-anchor="middle" fill="#6F6666" font-family="Georgia, serif" font-size="34">Reemplazar por foto real</text>
+</svg>
