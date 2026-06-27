@@ -15,13 +15,13 @@ function ArrowRightMini() {
 }
 
 export function GiftCard({ gift, onReserve }: GiftCardProps) {
-  const primaryLink = gift.referenceLinks[0]
+  const primaryLink = gift.referenceUrl
 
   if (gift.reserved) {
     return (
       <article className="card-surface relative flex h-full flex-col overflow-hidden rounded-[28px] border-[rgba(232,160,180,0.4)] bg-[rgba(254,246,240,0.92)] p-0 shadow-[0_14px_32px_rgba(180,126,120,0.12)]">
         <span className="absolute right-3 top-3 z-10 rounded-full bg-[var(--color-sage)] px-3 py-1 text-[0.74rem] font-semibold text-[var(--color-warm-white)]">
-          ✓ Ya elegido
+          Ya elegido
         </span>
 
         <div className="overflow-hidden rounded-t-[28px] bg-[rgba(255,255,255,0.18)]">
@@ -74,16 +74,10 @@ export function GiftCard({ gift, onReserve }: GiftCardProps) {
           {gift.description}
         </p>
 
-        {gift.preferenceNote ? (
-          <p className="mt-2 text-[0.92rem] leading-6 text-[var(--color-text-muted)]">
-            {gift.preferenceNote}
-          </p>
-        ) : null}
-
         <div className="mt-auto flex flex-nowrap items-center justify-between gap-2 pt-5 sm:gap-3">
           {primaryLink ? (
             <a
-              href={primaryLink.href}
+              href={primaryLink}
               target="_blank"
               rel="noreferrer"
               className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-[0.84rem] font-medium text-[var(--color-pink-medium)] no-underline transition-colors duration-200 group-hover:text-[var(--color-strawberry)] sm:text-[0.92rem]"

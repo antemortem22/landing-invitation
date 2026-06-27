@@ -6,19 +6,12 @@ export type GalleryItem = {
   alt: string
 }
 
-export type GiftReferenceLink = {
-  label: string
-  href: string
-}
-
 export type GiftItem = {
-  id: string
+  id: string | number
   image: string
   name: string
   description: string
-  category: string
-  preferenceNote?: string
-  referenceLinks: GiftReferenceLink[]
+  referenceUrl?: string
   reserved: boolean
 }
 

@@ -13,7 +13,7 @@ export const eventConfig: EventConfig = {
   venue: 'Salón Magnolia',
   address: 'Av. del Jardín 1234, CABA',
   mapsUrl: 'https://maps.google.com/?q=Av.+del+Jard%C3%ADn+1234,+CABA',
-  whatsappNumber: '5491100000000',
+  whatsappNumber: '5491136162830',
   footerNote:
     'Gracias por acompañarnos en esta tarde tan especial para nuestra familia.',
   contactLabel: 'Mamá de Olivia · +54 9 11 0000 0000',

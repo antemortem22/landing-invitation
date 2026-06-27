@@ -37,9 +37,19 @@ function IconHome() {
 
 function IconPhone() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M7.2 4.7c.5-.5 1.2-.6 1.8-.2l2.1 1.3c.7.4 1 1.2.8 2l-.5 2c1.2 2.2 2.9 4 5.2 5.2l2-.5c.8-.2 1.6.1 2 .8l1.3 2.1c.4.6.3 1.3-.2 1.8l-1 1c-.9.9-2.2 1.2-3.4.8-3.2-1.1-6.1-3-8.4-5.4-2.4-2.4-4.2-5.2-5.4-8.4-.4-1.2-.1-2.5.8-3.4l1-1Z" />
-    </svg>
+    <span
+      className="block h-5 w-5 bg-[var(--color-strawberry)]"
+      style={{
+        maskImage: "url('/telefono.svg')",
+        maskRepeat: 'no-repeat',
+        maskPosition: 'center',
+        maskSize: 'contain',
+        WebkitMaskImage: "url('/telefono.svg')",
+        WebkitMaskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center',
+        WebkitMaskSize: 'contain',
+      }}
+    />
   )
 }
 

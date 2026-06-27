@@ -14,22 +14,12 @@ export function buildGiftReservationMessage(gift: GiftItem, event: EventConfig) 
 }
 
 export function buildRsvpMessage(form: RsvpFormState, event: EventConfig) {
+  const extraMessage = form.message.trim() ? `\n${form.message.trim()}` : ''
+  const heartText = '<3'
+
   if (form.attendance === 'yes') {
-    return [
-      `Hola, soy ${form.fullName}.`,
-      `Voy a asistir al Baby Shower de ${event.babyName}.`,
-      `Cantidad de asistentes: ${form.attendees}.`,
-      form.message ? `Mensaje: ${form.message}` : '',
-    ]
-      .filter(Boolean)
-      .join('\n')
+    return `Hola ${heartText} Soy ${form.fullName}.\nQueria confirmar que voy a asistir al baby shower de ${event.babyName}. Vamos a ser ${form.attendees} persona/s.${extraMessage}`
   }
 
-  return [
-    `Hola, soy ${form.fullName}.`,
-    `No voy a poder asistir al Baby Shower de ${event.babyName}.`,
-    form.message ? `Mensaje: ${form.message}` : '',
-  ]
-    .filter(Boolean)
-    .join('\n')
+  return `Hola ${heartText} Soy ${form.fullName}.\nQueria avisar que no voy a poder asistir al baby shower de ${event.babyName}.${extraMessage}`
 }

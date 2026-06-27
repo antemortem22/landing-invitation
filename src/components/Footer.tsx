@@ -2,7 +2,7 @@ import { eventConfig } from '../config/event'
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-[var(--color-border)] bg-[var(--color-cream)] px-4 py-3.5 text-center">
+    <footer className="relative border-t border-[var(--color-border)] bg-[var(--color-cream)] px-4 py-3.5 text-center">
       <div className="page-shell">
         <p className="font-serif text-[1.45rem] font-bold text-[var(--color-text)] md:text-[1.6rem]">
           Baby Shower de {eventConfig.babyName}

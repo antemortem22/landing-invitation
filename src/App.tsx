@@ -13,7 +13,7 @@ function App() {
       <div className="page-background" aria-hidden="true" />
       <Navbar />
       <BackgroundMusic />
-      <main className="relative z-10">
+      <main className="relative">
         <InvitationHero />
         <Gallery />
         <GiftSection />

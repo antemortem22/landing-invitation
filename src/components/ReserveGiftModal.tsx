@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { eventConfig } from '../config/event'
 import type { GiftItem } from '../types'
-import { buildGiftReservationMessage, buildWhatsappUrl } from '../utils/whatsapp'
 
 type ReserveGiftModalProps = {
   gift: GiftItem | null
@@ -44,11 +42,6 @@ export function ReserveGiftModal({
 
   const currentGift = gift
 
-  const whatsappUrl = buildWhatsappUrl(
-    eventConfig.whatsappNumber,
-    buildGiftReservationMessage(currentGift, eventConfig),
-  )
-
   async function handleConfirm() {
     try {
       setStatus('loading')
@@ -79,15 +72,7 @@ export function ReserveGiftModal({
             <p className="text-sm leading-6 text-[var(--color-text-muted)]">
               {currentGift.name} ya figura como reservado para los demás invitados.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="pill-button pill-button-primary"
-              >
-                Avisar por WhatsApp
-              </a>
+            <div className="flex justify-center">
               <button type="button" className="pill-button pill-button-secondary" onClick={onClose}>
                 Cerrar
               </button>
