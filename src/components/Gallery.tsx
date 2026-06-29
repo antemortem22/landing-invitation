@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { galleryItems } from '../data/gallery'
 import { GalleryCard } from './GalleryCard'
+import { GalleryLightbox } from './GalleryLightbox'
 
 function getVisibleCount(width: number) {
   if (width >= 1280) {
@@ -33,6 +34,14 @@ function ChevronRight() {
 export function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [visibleCount, setVisibleCount] = useState(() => getVisibleCount(window.innerWidth))
+  const [isDocumentHidden, setIsDocumentHidden] = useState(document.hidden)
+  const [isReducedMotion, setIsReducedMotion] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const [isManualPauseActive, setIsManualPauseActive] = useState(false)
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const autoplayTimeoutRef = useRef<number | null>(null)
+  const manualPauseTimeoutRef = useRef<number | null>(null)
+  const lastTriggerRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     function handleResize() {
@@ -46,23 +55,117 @@ export function Gallery() {
     }
   }, [])
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updatePreference = () => {
+      setIsReducedMotion(mediaQuery.matches)
+    }
+
+    updatePreference()
+    mediaQuery.addEventListener('change', updatePreference)
+
+    return () => {
+      mediaQuery.removeEventListener('change', updatePreference)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsDocumentHidden(document.hidden)
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
+
   const visibleItems = useMemo(() => {
-    return Array.from({ length: visibleCount }, (_, offset) => {
+    return Array.from({ length: Math.min(visibleCount, galleryItems.length) }, (_, offset) => {
       const itemIndex = (currentIndex + offset) % galleryItems.length
-      return galleryItems[itemIndex]
+      return {
+        item: galleryItems[itemIndex],
+        itemIndex,
+      }
     })
   }, [currentIndex, visibleCount])
 
-  function handlePrevious() {
-    setCurrentIndex((value) => (value - 1 + galleryItems.length) % galleryItems.length)
+  function resetAutoplay() {
+    if (autoplayTimeoutRef.current !== null) {
+      window.clearTimeout(autoplayTimeoutRef.current)
+      autoplayTimeoutRef.current = null
+    }
   }
 
-  function handleNext() {
-    setCurrentIndex((value) => (value + 1) % galleryItems.length)
+  function clearManualPauseTimeout() {
+    if (manualPauseTimeoutRef.current !== null) {
+      window.clearTimeout(manualPauseTimeoutRef.current)
+      manualPauseTimeoutRef.current = null
+    }
+  }
+
+  function goToIndex(nextIndex: number) {
+    setCurrentIndex((nextIndex + galleryItems.length) % galleryItems.length)
+  }
+
+  function handleManualNavigation(nextIndex: number) {
+    resetAutoplay()
+    clearManualPauseTimeout()
+    setIsManualPauseActive(true)
+    manualPauseTimeoutRef.current = window.setTimeout(() => {
+      setIsManualPauseActive(false)
+      manualPauseTimeoutRef.current = null
+    }, 5000)
+    goToIndex(nextIndex)
+  }
+
+  useEffect(() => {
+    resetAutoplay()
+
+    const shouldPauseAutoplay =
+      isReducedMotion ||
+      lightboxIndex !== null ||
+      isDocumentHidden ||
+      isManualPauseActive ||
+      galleryItems.length <= 1
+
+    if (shouldPauseAutoplay) {
+      return
+    }
+
+    autoplayTimeoutRef.current = window.setTimeout(() => {
+      setCurrentIndex((value) => (value + 1) % galleryItems.length)
+    }, 5000)
+
+    return resetAutoplay
+  }, [currentIndex, isDocumentHidden, isManualPauseActive, isReducedMotion, lightboxIndex])
+
+  useEffect(() => {
+    return () => {
+      clearManualPauseTimeout()
+    }
+  }, [])
+
+  function openLightbox(itemIndex: number, element: HTMLElement | null) {
+    lastTriggerRef.current = element
+    setLightboxIndex(itemIndex)
+    goToIndex(itemIndex)
+  }
+
+  function closeLightbox() {
+    setLightboxIndex(null)
+    window.requestAnimationFrame(() => {
+      lastTriggerRef.current?.focus()
+    })
   }
 
   return (
-    <section id="fotos" className="px-4 py-10 sm:py-14">
+    <section
+      id="fotos"
+      ref={sectionRef}
+      className="px-4 py-10 sm:py-14"
+    >
       <div className="page-shell">
         <div className="section-heading">
           <p className="section-eyebrow">GALERIA</p>
@@ -75,7 +178,7 @@ export function Gallery() {
               type="button"
               aria-label="Ver fotos anteriores"
               className="absolute -left-2 top-[35%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(255,253,252,0.98)] text-[var(--color-text)] shadow-[0_10px_26px_rgba(180,126,120,0.18)] sm:-left-4 sm:top-[38%] sm:h-11 sm:w-11 lg:-left-5"
-              onClick={handlePrevious}
+              onClick={() => handleManualNavigation(currentIndex - 1)}
             >
               <ChevronLeft />
             </button>
@@ -89,8 +192,14 @@ export function Gallery() {
                     : 'max-w-[1040px] grid-cols-3 px-10 sm:px-8'
               }`}
             >
-              {visibleItems.map((item, index) => (
-                <GalleryCard key={`${item.id}-${currentIndex}-${index}`} item={item} />
+              {visibleItems.map(({ item, itemIndex }, index) => (
+                <GalleryCard
+                  key={`${item.id}-${currentIndex}-${index}`}
+                  item={item}
+                  isPrimary={visibleCount === 3 ? index === 1 : itemIndex === currentIndex}
+                  isSecondary={visibleCount === 3 ? index !== 1 : false}
+                  onImageClick={(element) => openLightbox(itemIndex, element)}
+                />
               ))}
             </div>
 
@@ -98,7 +207,7 @@ export function Gallery() {
               type="button"
               aria-label="Ver fotos siguientes"
               className="absolute -right-2 top-[35%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(255,253,252,0.98)] text-[var(--color-text)] shadow-[0_10px_26px_rgba(180,126,120,0.18)] sm:-right-4 sm:top-[38%] sm:h-11 sm:w-11 lg:-right-5"
-              onClick={handleNext}
+              onClick={() => handleManualNavigation(currentIndex + 1)}
             >
               <ChevronRight />
             </button>
@@ -119,13 +228,25 @@ export function Gallery() {
                       ? 'h-2.5 w-5 bg-[var(--color-strawberry)]'
                       : 'h-2.5 w-2.5 bg-[rgba(232,160,180,0.6)]'
                   }`}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => handleManualNavigation(index)}
                 />
               )
             })}
           </div>
         </div>
       </div>
+
+      {lightboxIndex !== null ? (
+        <GalleryLightbox
+          activeIndex={lightboxIndex}
+          items={galleryItems}
+          onClose={closeLightbox}
+          onNavigate={(nextIndex) => {
+            setLightboxIndex(nextIndex)
+            goToIndex(nextIndex)
+          }}
+        />
+      ) : null}
     </section>
   )
 }

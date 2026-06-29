@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import pinkBow from '../assets/pinkbow.png'
 import { eventConfig } from '../config/event'
 import { CalendarButton } from './CalendarButton'
@@ -7,11 +7,75 @@ const navItems = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#fotos', label: 'Fotos' },
   { href: '#regalos', label: 'Regalos' },
+  { href: '#detalles', label: 'Detalles' },
   { href: '#confirmar', label: 'Confirmar' },
 ]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeHref, setActiveHref] = useState('#inicio')
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
+
+    const handleScrollClose = () => {
+      setIsOpen(false)
+    }
+
+    window.addEventListener('scroll', handleScrollClose, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollClose)
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => ({
+        href: item.href,
+        element: document.getElementById(item.href.slice(1)),
+      }))
+      .filter(
+        (entry): entry is { href: string; element: HTMLElement } => Boolean(entry.element),
+      )
+
+    if (!sections.length) {
+      return
+    }
+
+    let ticking = false
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 120
+      let nextActiveHref = sections[0].href
+
+      for (const section of sections) {
+        if (scrollPosition >= section.element.offsetTop) {
+          nextActiveHref = section.href
+        }
+      }
+
+      setActiveHref(nextActiveHref)
+      ticking = false
+    }
+
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(updateActiveSection)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-cream)]">
@@ -33,12 +97,12 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex lg:gap-10">
           <nav className="flex items-center gap-6" aria-label="Navegacion principal">
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 className={`relative pb-1 text-[0.74rem] font-medium no-underline transition-colors hover:text-[var(--color-strawberry)] ${
-                  index === 0
+                  activeHref === item.href
                     ? 'text-[var(--color-strawberry)] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-5 after:-translate-x-1/2 after:rounded-full after:bg-[var(--color-pink-medium)]'
                     : 'text-[var(--color-text-muted)]'
                 }`}
@@ -80,10 +144,10 @@ export function Navbar() {
 
       <div
         aria-hidden={!isOpen}
-        className={`absolute left-0 right-0 top-full overflow-hidden bg-[var(--color-cream)] shadow-[0_18px_36px_rgba(180,126,120,0.08)] transition-all duration-300 ease-out md:hidden ${
+        className={`absolute left-0 right-0 top-full overflow-y-auto bg-[var(--color-cream)] shadow-[0_18px_36px_rgba(180,126,120,0.08)] transition-all duration-300 ease-out md:hidden ${
           isOpen
-            ? 'visible max-h-80 border-t border-[var(--color-border)] opacity-100'
-            : 'invisible max-h-0 border-t border-transparent opacity-0 pointer-events-none'
+            ? 'visible max-h-[calc(100svh-58px)] border-t border-[var(--color-border)] opacity-100'
+            : 'invisible max-h-0 border-t border-transparent opacity-0 pointer-events-none overflow-hidden'
         }`}
       >
         <div

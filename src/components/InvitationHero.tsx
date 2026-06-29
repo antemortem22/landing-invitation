@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react'
-import { eventConfig } from '../config/event'
 import pinkBow from '../assets/pinkbow.png'
+import { eventConfig } from '../config/event'
 import { CalendarButton } from './CalendarButton'
+import { HeroCountdown, SoftPinkDivider } from './Countdown'
 
 type DetailItem = {
   icon: ReactNode
@@ -81,7 +82,7 @@ export function InvitationHero() {
             <img src={pinkBow} alt="" aria-hidden="true" className="h-auto w-16 sm:w-20" />
           </div>
 
-          <div className="mx-auto flex max-w-[520px] flex-col items-center text-center">
+          <div className="mx-auto flex max-w-[560px] flex-col items-center text-center">
             <p className="mb-2 text-[0.62rem] uppercase tracking-[0.28em] text-[var(--color-strawberry)] sm:text-[0.66rem] sm:tracking-[0.33em]">
               {eventConfig.eyebrow}
             </p>
@@ -98,7 +99,7 @@ export function InvitationHero() {
               {eventConfig.description}
             </p>
 
-            <div className="mt-4 h-[2px] w-40 bg-[linear-gradient(90deg,rgba(232,160,180,0),rgba(232,160,180,0.9),rgba(232,160,180,0))]" />
+            <SoftPinkDivider className="mt-4" />
 
             <ul className="mt-4 flex w-full max-w-[320px] flex-col gap-2.5 text-left sm:max-w-[340px]">
               {detailItems.map((item) => (
@@ -117,6 +118,8 @@ export function InvitationHero() {
                 </li>
               ))}
             </ul>
+
+            <HeroCountdown />
 
             <div className="mt-5 flex w-full flex-col gap-2.5 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-3 lg:flex-nowrap">
               <a

@@ -24,12 +24,14 @@ export type EventConfig = {
   title: string
   subtitle: string
   description: string
+  eventDateTimeIso: string
   dateLabel: string
   timeLabel: string
   venue: string
   address: string
   mapsUrl: string
   whatsappNumber: string
+  paymentAlias: string
   footerNote: string
   contactLabel: string
   calendarFile: string

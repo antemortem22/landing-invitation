@@ -3,6 +3,7 @@ import giftPlaceholderImage from '../assets/gifts/gift-nursery.svg'
 import { supabase } from '../assets/lib/supabase'
 import { initialGifts } from '../data/gifts'
 import type { GiftFilter, GiftItem } from '../types'
+import { GiftAliasCard } from './GiftAliasCard'
 import { GiftCard } from './GiftCard'
 import { GiftFilters } from './GiftFilters'
 import { ReserveGiftModal } from './ReserveGiftModal'
@@ -192,6 +193,8 @@ export function GiftSection() {
             </button>
           </div>
         ) : null}
+
+        <GiftAliasCard />
 
         {!isLoading && !hasVisibleResults ? (
           <p className="mx-auto mt-8 max-w-[680px] rounded-[22px] border border-[var(--color-border)] bg-[rgba(255,253,252,0.82)] px-5 py-6 text-center text-[0.96rem] text-[var(--color-text-muted)]">

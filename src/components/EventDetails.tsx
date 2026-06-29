@@ -82,7 +82,7 @@ const detailItems: DetailItem[] = [
 
 export function EventDetails() {
   return (
-    <section className="px-4 py-10 sm:py-14">
+    <section id="detalles" className="px-4 py-10 sm:py-14">
       <div className="page-shell">
         <div className="section-heading">
           <p className="section-eyebrow">Detalles</p>
@@ -101,7 +101,9 @@ export function EventDetails() {
               <h3 className="mt-4 font-serif text-[1.75rem] font-bold leading-none text-[var(--color-text)] transition-colors duration-200 group-hover:text-[rgba(47,42,42,0.92)] sm:text-3xl">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm font-semibold text-[var(--color-text)]">{item.value}</p>
+              <p className="mt-2 whitespace-pre-line text-sm font-semibold text-[var(--color-text)]">
+                {item.value}
+              </p>
               {item.helper ? (
                 <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">
                   {item.helper}

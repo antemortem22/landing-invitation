@@ -1,16 +1,7 @@
 import { useState } from 'react'
 import pinkBow from '../assets/pinkbow.png'
-import { eventConfig } from '../config/event'
 import { RsvpModal } from './RsvpModal'
-
-function CalendarMiniIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="4.5" y="5.5" width="15" height="14" rx="3" />
-      <path d="M8 3.5v4M16 3.5v4M4.5 9.5h15" />
-    </svg>
-  )
-}
+import { RsvpCountdownMessage } from './Countdown'
 
 function ClockMiniIcon() {
   return (
@@ -64,16 +55,7 @@ export function RsvpSection() {
 
           <div className="mx-auto mt-5 h-[2px] w-40 bg-[linear-gradient(90deg,rgba(232,160,180,0),rgba(232,160,180,0.9),rgba(232,160,180,0))]" />
 
-          <div className="mx-auto mt-5 flex w-full max-w-[660px] items-center gap-3 rounded-full border border-[rgba(232,160,180,0.45)] bg-[rgba(255,253,252,0.86)] px-5 py-3 text-left shadow-[0_10px_24px_rgba(180,126,120,0.08)]">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgba(249,213,229,0.42)] text-[var(--color-pink-medium)]">
-              <CalendarMiniIcon />
-            </span>
-            <p className="text-[0.98rem] font-semibold leading-7 text-[var(--color-text)] sm:text-[1rem]">
-              <span className="text-[var(--color-strawberry)]">{eventConfig.dateLabel}</span>
-              {' — '}
-              {eventConfig.timeLabel}
-            </p>
-          </div>
+          <RsvpCountdownMessage />
 
           <button
             type="button"
